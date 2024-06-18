@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
 </head>
 <body>
-<form action="update" method="post">
-    <table width="700" cellpadding="0" cellspacing="0" border="1">
+<table width="700" cellpadding="0" cellspacing="0" border="1">
+    <form action="write" method="post">
         <tr>
             <td width="80">작성자</td>
             <td>
@@ -25,14 +25,14 @@
                 <input type="text" name="content" size="50" value="${dto.content}">
             </td>
         </tr>
+        <tr>${message}</tr>
         <tr>
             <td colspan="2">
-                <input type="submit" value="수정">&nbsp;&nbsp;
-                <input type="hidden" name="id" value="${dto.id}">
+                <input type="submit" value="입력">&nbsp;&nbsp;
                 <a href="/">목록보기</a>
             </td>
         </tr>
-    </table>
-</form>
+    </form>
+</table>
 </body>
 </html>

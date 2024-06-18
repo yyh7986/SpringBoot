@@ -5,6 +5,33 @@
 
 <mapper namespace="com.himedia.g11.dao.IBbsDao">
     <select id="select" resultType="com.himedia.g11.dto.BbsDto">
-        select * from bbs order by id desc
+        SELECT *
+        FROM bbs
+        ORDER BY id DESC
     </select>
+
+    <insert id="insert" parameterType="com.himedia.g11.dto.BbsDto">
+        INSERT INTO bbs(writer, title, content)
+        VALUES (#{writer}, #{title}, #{content})
+        <!--parameterType이 지정되어있지 않을때
+        insert into bbs(writer, title, content) values(#{bbsdto.writer}, #{bbsdto.title}, #{bbsdto.content})
+        insert into bbs(writer, title, content) values(#{param1.writer}, #{param1.title}, #{param1.content})-->
+    </insert>
+
+    <select id="getBbs" resultType="com.himedia.g11.dto.BbsDto">
+        SELECT * FROM bbs WHERE id=#{param1}
+    </select>
+
+    <update id="update" parameterType="com.himedia.g11.dto.BbsDto">
+        UPDATE bbs
+        SET writer=#{writer},
+            title=#{title},
+            content=#{content}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM bbs WHERE id=#{param1}
+    </delete>
 </mapper>
+
