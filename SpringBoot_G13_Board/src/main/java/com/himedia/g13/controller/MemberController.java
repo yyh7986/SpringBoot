@@ -59,6 +59,42 @@ public class MemberController {
 
     @GetMapping("/idcheck")
     public String idcheck(@RequestParam("userid") String userid, Model model){
+        MemberDto mdto = ms.getMember(userid);
+        if(mdto == null){
+            model.addAttribute("result", -1);
+        }
+        else{
+            model.addAttribute("result", 1);
+        }
+        model.addAttribute("userid", userid);
+        return "member/idcheck";
+    }
 
+    @PostMapping("/join")
+    public String join(@ModelAttribute("dto") @Valid MemberDto memberdto, BindingResult result,
+                       @RequestParam(value = "reid", required = false) String reid,
+                       @RequestParam(value = "pwd_check", required = false) String pwd_check, Model model){
+        String url = "member/joinForm";
+        if(result.getFieldError("userid") != null) {
+            model.addAttribute("message", result.getFieldError("userid").getDefaultMessage());
+        }else if(result.getFieldError("pwd") != null) {
+            model.addAttribute("message", result.getFieldError("pwd").getDefaultMessage());
+        }else if(result.getFieldError("name") != null) {
+            model.addAttribute("message", result.getFieldError("name").getDefaultMessage());
+        }else if(result.getFieldError("phone") != null) {
+            model.addAttribute("message", result.getFieldError("phone").getDefaultMessage());
+        }else if(result.getFieldError("email") != null) {
+            model.addAttribute("message", result.getFieldError("email").getDefaultMessage());
+        }else if(reid == null || !memberdto.getUserid().equals(reid)) {
+            model.addAttribute("message", "아이디 중복체크가 되지 않았습니다");
+        }else if(pwd_check == null || !memberdto.getPwd().equals(pwd_check)){
+            model.addAttribute("message", "비밀번호 확인이 일치하지 않습니다.");
+        }else{
+            ms.insertMember(memberdto);
+            model.addAttribute("message", "회원가입이 완료되었습니다. 로그인하세요");
+            url = "member/loginForm";
+        }
+
+        return url;
     }
 }

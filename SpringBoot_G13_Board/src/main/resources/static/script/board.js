@@ -1,11 +1,10 @@
 function idCheck(){
-    const userId = document.join.userid;
-    if(userid.value==""){
+    if(document.join.userid.value == ""){
         alert('아이디를 입력하세요');
-        userid.focus();
+        document.join.userid.focus();
         return;
     }
-    let k = userid.value;
+    let k = document.join.userid.value;
     let opt = "toolbar=no,menubar=no,resizable=no,width=450,height=200";
     window.open("idcheck?userid=" + k, "id check", opt);
 }
