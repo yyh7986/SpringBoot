@@ -11,8 +11,20 @@ public class MemberService {
     @Autowired
     IMemberDao mdao;
 
-    public MemberDto getMember(String userid){
+    public MemberDto getMember(String userid) {
         MemberDto mdto = mdao.getMember(userid);
         return mdto;
+    }
+
+    public void insertMember(MemberDto memberdto) {
+        mdao.insertMember(memberdto);
+    }
+
+    public void updateMember(MemberDto memberdto) {
+        mdao.updateMember(memberdto);
+    }
+
+    public void deleteMember(String userid) {
+        mdao.deleteMember(userid);
     }
 }

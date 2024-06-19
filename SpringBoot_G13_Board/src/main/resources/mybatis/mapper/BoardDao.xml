@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.himedia.g13.dao.IBoardDao">
+
+    <select id="getAllCount" resultType="_int">
+        SELECT count(*)
+        FROM board
+    </select>
+
+    <select id="selectBoard" parameterType="com.himedia.g13.dto.Paging"
+            resultType="com.himedia.g13.dto.BoardDto">
+        SELECT *
+        FROM board
+        ORDER BY num DESC
+        LIMIT #{displayRow} OFFSET #{startNum}
+    </select>
+
+    <select id="getReplyCount">
+        SELECT count(*)
+        FROM reply
+        WHERE boardnum = #{param1}
+    </select>
+
+</mapper>

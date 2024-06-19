@@ -5,7 +5,29 @@
 
 <mapper namespace="com.himedia.g13.dao.IMemberDao">
     <select id="getMember" resultType="com.himedia.g13.dto.MemberDto">
-        select * from member where userid=#{param1}
+        SELECT *
+        FROM member
+        WHERE userid = #{param1}
     </select>
+
+    <insert id="insertMember" parameterType="com.himedia.g13.dto.MemberDto">
+        INSERT INTO member(userid, name, pwd, email, phone, provider)
+        VALUES (#{userid}, #{name}, #{pwd}, #{email}, #{phone}, #{provider})
+    </insert>
+
+    <update id="updateMember" parameterType="com.himedia.g13.dto.MemberDto">
+        UPDATE member
+        SET pwd=#{pwd},
+            name=#{name},
+            email=#{email},
+            phone=#{phone}
+        WHERE userid = #{userid}
+    </update>
+
+    <delete id="deleteMember">
+        DELETE
+        FROM member
+        WHERE userid = #{param1}
+    </delete>
 </mapper>
 

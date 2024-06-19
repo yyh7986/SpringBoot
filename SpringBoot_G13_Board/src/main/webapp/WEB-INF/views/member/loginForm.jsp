@@ -9,10 +9,12 @@
 <form class="login-form" action="login" method="post" name="login">
     <h2>Login</h2>
     <div class="field">
-        <label>User ID</label><input type="text" name="userid" value="${dto.userid}">
+        <label>User ID</label>
+        <input type="text" name="userid" value="${dto.userid}">
     </div>
     <div class="field">
-        <label>Password</label><input type="password" name="pwd">
+        <label>Password</label>
+        <input type="password" name="pwd">
     </div>
     <div class="field">${message}</div>
     <div class="login-button">
@@ -21,10 +23,10 @@
                onClick="location.href='joinForm'"/>
     </div>
     <div class="sns-login">
-        <input type="button" class="btn facebook" value="Facebook" />
-        <input type="button" class="btn twitter" value="Twitter" />
-        <input type="button" class="btn google" value="Google" />
-        <input type="button" class="btn kakao" value="Kakao" />
+        <input type="button" class="btn facebook" value="Facebook"/>
+        <input type="button" class="btn twitter" value="Twitter"/>
+        <input type="button" class="btn google" value="Google"/>
+        <input type="button" class="btn kakao" value="Kakao" onclick="location.href='kakaostart'"/>
     </div>
 </form>
 </body>
