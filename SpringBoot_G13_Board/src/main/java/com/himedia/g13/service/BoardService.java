@@ -3,6 +3,7 @@ package com.himedia.g13.service;
 import com.himedia.g13.dao.IBoardDao;
 import com.himedia.g13.dto.BoardDto;
 import com.himedia.g13.dto.Paging;
+import com.himedia.g13.dto.ReplyDto;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,12 +44,63 @@ public class BoardService {
 
         for (BoardDto board : list) {
             int cnt = bdao.getReplyCount(board.getNum());
-            board.setReadcount(cnt);
+            board.setReplycnt(cnt);
         }
 
         result.put("boardList", list);
         result.put("paging", paging);
 
         return result;
+    }
+
+    public void insertBoard(BoardDto bdto) {
+        bdao.insertBoard(bdto);
+    }
+
+    public HashMap<String, Object> boardView(int num) {
+        HashMap<String, Object> result = new HashMap<>();
+        // num 번호의 게시물 조회수 +1
+        bdao.plusReadCount(num);
+
+        // num 으로 게시물 조회
+        BoardDto bdto = bdao.getBoard(num);
+
+        // 댓글 조회
+        List<ReplyDto> list = bdao.selectReply(num);
+
+        // 게시물과 댓글을 map에 저장
+        result.put("board", bdto);
+        result.put("replyList", list);
+
+        return result;
+    }
+
+    public HashMap<String, Object> boardViewWithoutCnt(int num) {
+        HashMap<String, Object> result = new HashMap<>();
+        BoardDto bdto = bdao.getBoard(num);
+        List<ReplyDto> list = bdao.selectReply(num);
+        result.put("board", bdto);
+        result.put("replyList", list);
+        return result;
+    }
+
+    public void insertReply(ReplyDto rdto) {
+        bdao.insertReply(rdto);
+    }
+
+    public void deleteReply(int rnum) {
+        bdao.deleteReply(rnum);
+    }
+
+    public BoardDto getBoard(int num) {
+        return bdao.getBoard(num);
+    }
+
+    public void updateBoard(BoardDto bdto) {
+        bdao.updateBoard(bdto);
+    }
+
+    public void deleteBoard(int num) {
+        bdao.deleteBoard(num);
     }
 }

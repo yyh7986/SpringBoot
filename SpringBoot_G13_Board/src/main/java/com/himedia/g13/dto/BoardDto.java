@@ -18,6 +18,7 @@ public class BoardDto {
     private String content;
     private int readcount;
     private Timestamp writedate;
-    private String imgfilename;
+    private String image;
+    private String savefilename;
     private int replycnt;
 }
