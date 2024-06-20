@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.himedia.g14.dao.IProductDao">
+
+    <select id="getBestList" resultType="com.himedia.g14.dto.ProductVO">
+        SELECT *
+        FROM best_pro_view
+    </select>
+
+    <select id="getNewList" resultType="com.himedia.g14.dto.ProductVO">
+        SELECT *
+        FROM new_pro_view
+    </select>
+</mapper>
