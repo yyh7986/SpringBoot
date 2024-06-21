@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ include file="../include/header.jsp" %>
 
 <section>
@@ -16,11 +16,11 @@
             </div>
             <div class="btn">
                 <input type="submit" value="LOGIN">
-                <input type="button" value="JOIN" onclick="">
+                <input type="button" value="회원가입" onclick="location.href='contract'">
                 <input type="button" value="FIND ID" onclick="">
             </div>
             <div class="btn">
-                <input type="button" value="Kakao" onClick="" style="background: yellow; color: black">
+                <input type="button" value="Kakao" onclick="location.href='kakaostart'" style="background: yellow; color: black">
                 <input type="button" value="Naver" onclick="" style="background: green;">
                 <input type="button" value="Google" onclick="" style="background: red;">
             </div>

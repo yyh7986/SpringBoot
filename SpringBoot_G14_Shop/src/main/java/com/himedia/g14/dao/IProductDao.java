@@ -11,4 +11,8 @@ public interface IProductDao {
     List<ProductVO> getBestList();
 
     List<ProductVO> getNewList();
+
+    List<ProductVO> getKindList(String kind);
+
+    ProductVO getProduct(int pseq);
 }

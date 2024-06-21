@@ -1,6 +1,7 @@
 package com.himedia.g14.dto;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 

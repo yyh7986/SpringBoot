@@ -11,4 +11,9 @@
         WHERE userid = #{param1}
     </select>
 
+    <insert id="insertMember" parameterType="com.himedia.g14.dto.MemberVO">
+        INSERT INTO member(userid, pwd, name, email, phone, zip_num, address1, address2, address3, provider)
+        VALUES (#{userid}, #{pwd}, #{name}, #{email}, #{phone}, #{zip_num}, #{address1}, #{address2}, #{address3},
+                #{provider})
+    </insert>
 </mapper>

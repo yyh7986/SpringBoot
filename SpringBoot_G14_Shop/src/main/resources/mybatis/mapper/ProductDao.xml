@@ -14,4 +14,16 @@
         SELECT *
         FROM new_pro_view
     </select>
+
+    <select id="getKindList" resultType="com.himedia.g14.dto.ProductVO">
+        SELECT *
+        FROM product
+        WHERE kind = #{param1}
+    </select>
+
+    <select id="getProduct" resultType="com.himedia.g14.dto.ProductVO">
+        SELECT *
+        FROM product
+        WHERE pseq = #{param1}
+    </select>
 </mapper>
