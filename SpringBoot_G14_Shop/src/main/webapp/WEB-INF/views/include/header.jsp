@@ -38,6 +38,8 @@
                 <a href="cartList">CART</a>
                 <a href="mypage">MY PAGE</a>
                 <a href="qnaList">고객센터</a>
+                <%-- 커밋 테스트용 --%>
+                <a href="qnaList">고객센터</a>
 
             </div>
             <div class="hmenu">
