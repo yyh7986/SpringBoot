@@ -1,10 +1,10 @@
 function go_cart() {
-    if (document.form.quantity.value == "") {
+    if (document.document.frm.quantity.value == "") {
         alert("수량을 입력하세요");
-        document.form.quantity.focus();
+        document.document.frm.quantity.focus();
     } else {
-        document.form.action = 'cartInsert';
-        document.form.submit();
+        document.document.frm.action = 'cartInsert';
+        document.document.frm.submit();
     }
 }
 
@@ -60,7 +60,27 @@ function go_order_insert() {
 function go_order() {
     let ans = confirm("현재 상품을 주문할까요?");
     if (ans) {
-        document.form.action = "orderInsertOne";
-        document.form.submit();
+        document.document.frm.action = "orderInsertOne";
+        document.document.frm.submit();
+    }
+}
+
+function qnaViewWithPass(pass, qseq) {
+    let inputPass = prompt("비밀번호를 입력하세요.")
+    inputPass === pass ?
+        location.href = `qnaView?qseq=${qseq}` :
+        alert("비밀번호가 일치하지 않습니다.")
+}
+
+function qnaView(qseq) {
+    location.href=`qnaView?qseq=${qseq}`
+}
+
+function enable(){
+    if(document.frm.secret.checked){
+        document.frm.pass.disabled = false;
+    }else{
+        document.frm.pass.disabled = true;
+        document.frm.pass.value = "";
     }
 }

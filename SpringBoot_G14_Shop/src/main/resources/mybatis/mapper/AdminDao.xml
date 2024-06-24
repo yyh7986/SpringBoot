@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.himedia.g14.dao.IAdminDao">
+
+    <select id="getAdmin" resultType="com.himedia.g14.dto.AdminVO">
+        SELECT *
+        FROM admins
+        WHERE adminid = #{param1}
+    </select>
+
+    <select id="getAllCount" resultType="_int">
+        SELECT count(*)
+        FROM ${param1}
+        WHERE ${param2}
+        LIKE CONCAT('%', #{param3}, '%')
+    </select>
+
+    <select id="getProductList" resultType="com.himedia.g14.dto.ProductVO">
+        SELECT *
+        FROM product
+        WHERE name
+                  LIKE CONCAT('%', #{param2}, '%')
+        LIMIT #{param1.displayRow}
+        OFFSET #{param1.startNum}
+    </select>
+</mapper>

@@ -16,4 +16,17 @@
         VALUES (#{userid}, #{pwd}, #{name}, #{email}, #{phone}, #{zip_num}, #{address1}, #{address2}, #{address3},
                 #{provider})
     </insert>
+
+    <update id="updateMember" parameterType="com.himedia.g14.dto.MemberVO">
+        UPDATE member
+        SET pwd=#{pwd},
+            name=#{name},
+            email=#{email},
+            phone=#{phone},
+            zip_num=#{zip_num},
+            address1=#{address1},
+            address2=#{address2},
+            address3=#{address3}
+        WHERE userid=#{userid}
+    </update>
 </mapper>

@@ -211,4 +211,38 @@ public class MemberController {
         }
         return url;
     }
+
+    @GetMapping("/updateMemberForm")
+    public ModelAndView updateMemberForm() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("mypage/updateMemberForm");
+        return mav;
+    }
+
+    @PostMapping("/updateMember")
+    public String updateMember(@ModelAttribute("loginUser") @Valid MemberVO membervo, BindingResult result,
+                           @RequestParam(value = "reid", required = false) String reid,
+                           @RequestParam(value = "pwdCheck", required = false) String pwdCheck, Model model) {
+        String url = "/updateMemberForm";
+
+        if (result.getFieldError("userid") != null) {
+            model.addAttribute("message", result.getFieldError("userid").getDefaultMessage());
+        } else if (result.getFieldError("pwd") != null) {
+            model.addAttribute("message", result.getFieldError("pwd").getDefaultMessage());
+        } else if (result.getFieldError("name") != null) {
+            model.addAttribute("message", result.getFieldError("name").getDefaultMessage());
+        } else if (result.getFieldError("phone") != null) {
+            model.addAttribute("message", result.getFieldError("phone").getDefaultMessage());
+        } else if (result.getFieldError("email") != null) {
+            model.addAttribute("message", result.getFieldError("email").getDefaultMessage());
+        } else if (reid == null || (!reid.equals(membervo.getUserid()))) {
+            model.addAttribute("message", "아이디 중복체크를 완료하세요");
+        } else if (pwdCheck == null || (!pwdCheck.equals(membervo.getPwd()))) {
+            model.addAttribute("message", " 비밀번호 확인이 일치하지 않습니다");
+        } else {
+            url = "/";
+            ms.updateMember(membervo);
+        }
+        return url;
+    }
 }
