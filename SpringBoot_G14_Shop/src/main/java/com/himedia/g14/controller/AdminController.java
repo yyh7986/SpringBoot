@@ -116,6 +116,7 @@ public class AdminController {
     @PostMapping("/adminProductWrite")
     public String adminProductWrite(@ModelAttribute("dto") @Valid ProductVO productVO,
                                     BindingResult result, Model model) {
-
+        as.insertProduct(productVO);
+        return "redirect:/adminProductList";
     }
 }

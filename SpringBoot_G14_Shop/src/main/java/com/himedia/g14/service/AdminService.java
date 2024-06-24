@@ -59,4 +59,8 @@ public class AdminService {
 
         return result;
     }
+
+    public void insertProduct(ProductVO productVO) {
+        adao.insertProduct(productVO);
+    }
 }
