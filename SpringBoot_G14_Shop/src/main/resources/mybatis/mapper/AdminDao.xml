@@ -23,7 +23,13 @@
         FROM product
         WHERE name
                   LIKE CONCAT('%', #{param2}, '%')
+        ORDER BY pseq DESC
         LIMIT #{param1.displayRow}
         OFFSET #{param1.startNum}
     </select>
+
+    <insert id="insertProduct" parameterType="com.himedia.g14.dto.ProductVO">
+        INSERT INTO product(name, kind, price1, price2, price3, content, image, savefilename)
+        VALUES (#{name}, #{kind}, #{price1}, #{price2}, #{price3}, #{content}, #{image}, #{savefilename})
+    </insert>
 </mapper>

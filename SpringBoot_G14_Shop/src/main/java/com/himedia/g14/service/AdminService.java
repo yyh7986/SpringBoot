@@ -27,8 +27,10 @@ public class AdminService {
         int page = 1;
         if(request.getParameter("page") != null) {
             page = Integer.parseInt(request.getParameter("page"));
-            session.setAttribute("page", page);
+            System.out.println("request page:" + page);
+            request.setAttribute("page", page);
         }else if(session.getAttribute("page") != null) {
+            System.out.println("session page:" + page);
             page = Integer.parseInt(request.getParameter("page"));
         }else{
             session.removeAttribute("page");

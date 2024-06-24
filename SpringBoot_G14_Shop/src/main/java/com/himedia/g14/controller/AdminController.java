@@ -96,8 +96,9 @@ public class AdminController {
         Calendar today = Calendar.getInstance();
         long t = today.getTimeInMillis();
         String filename = file.getOriginalFilename();
-        String fn1 = filename.substring(0, filename.lastIndexOf("."));  // 파일이름과 확장자 분리
-        String fn2 = filename.substring(filename.lastIndexOf(".") + 1);
+        System.out.println("filename : " + filename);
+        String fn1 = filename.substring(0, filename.indexOf("."));  // 파일이름과 확장자 분리
+        String fn2 = filename.substring(filename.indexOf(".") + 1);
         String uploadPath = path + "/" + fn1 + t + fn2;
         System.out.println("파일 저장 경로 = " + uploadPath);
         HashMap<String, Object> result = new HashMap<>();

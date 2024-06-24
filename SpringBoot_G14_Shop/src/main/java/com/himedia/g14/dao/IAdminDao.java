@@ -14,4 +14,6 @@ public interface IAdminDao {
     int getAllCount(String tablename, String fieldname, String key);
 
     List<ProductVO> getProductList(Paging paging, String key);
+
+    void insertProduct(ProductVO productVO);
 }

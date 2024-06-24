@@ -37,7 +37,7 @@
 <%--            <input type="file" name="image">--%>
             <div>
                 <input type="hidden" name="image" id="image">
-                <input type="hidden" id="savefilename">
+                <input type="hidden" id="savefilename" name="savefilename">
                 <div id="filename"></div>
             </div>
         </div>

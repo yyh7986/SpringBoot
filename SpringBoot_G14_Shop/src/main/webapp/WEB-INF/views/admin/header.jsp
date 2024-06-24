@@ -31,11 +31,11 @@
 
                     // controller에서 리턴된 해시맵이 data로 전달된다
                     success: function (data) {
-                        if (data.STATUS == 1) {
+                        if (data.STATUS === 1) {
                             $("#filename").append("<div>" + data.SAVEFILENAME + "</div>");
                             $("#image").val(data.IMAGE);
                             $("#savefilename").val(data.SAVEFILENAME);
-                            $("#filename").append("<img src='product_images/" + data.SAVEFILENAME + "'height='150'/>");
+                            $("#filename").append("<img src='product_images/" + data.SAVEFILENAME + "' height='150'/>");
                         }
                     },
                     error: function () {
